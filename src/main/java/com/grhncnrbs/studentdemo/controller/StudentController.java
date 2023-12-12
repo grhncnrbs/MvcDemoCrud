@@ -4,10 +4,7 @@ import com.grhncnrbs.studentdemo.entity.Student;
 import com.grhncnrbs.studentdemo.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -51,6 +48,12 @@ public class StudentController {
         existingStudent.setLastName(student.getLastName());
         existingStudent.setEmail(student.getEmail());
         studentService.save(existingStudent);
+        return "redirect:/students";
+    }
+
+    @DeleteMapping("/students/{id}")
+    public String deleteStudent(@PathVariable("id") Long id) {
+        studentService.delete(id);
         return "redirect:/students";
     }
 }

@@ -10,6 +10,7 @@ public interface StudentService {
     List<Student> getAll();
     Student save(Student student);
     Student update(Student student);
+    void delete(Long id);
 
 
 }
